@@ -1,0 +1,98 @@
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+    transform: translateY(-0.25rem);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 9.375rem;
+    height: 9.375rem;
+    border-radius: 50%;
+    box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 3rem;
+    /* Increased font size */
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.profile-field {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    /* Align input field vertically */
+}
+
+.field-label {
+    font-weight: bold;
+    margin-right: 1rem;
+    /* Increased margin */
+    font-size: 2rem;
+    /* Increased font size */
+}
+
+.field-input {
+    flex: 1;
+    /* Take remaining space */
+    padding: 1rem;
+    /* Increased padding */
+    font-size: 2rem;
+    /* Increased font size */
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem;
+}
+
+.profile-buttons {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.edit-button,
+.save-button {
+    padding: 1rem 2rem;
+    /* Increased padding */
+    border: none;
+    border-radius: 0.3125rem;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 2rem;
+    /* Increased font size */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.save-button:hover {
+    background-color: #0056b3;
+}

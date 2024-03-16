@@ -1,0 +1,47 @@
+@import '../../../assets/styles/variable';
+
+.real-time-data-grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.real-time-record-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.real-time-card-grid {
+    width: $realTimeCardWidth !important;
+    height: $realTImeCardHeight;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $realTimeCardColor !important;
+}
+
+.real-time-card-action {
+    display: flex;
+    justify-content: end;
+}
+
+.valid-real-time-data {}
+
+.invalid-real-time-data {
+    color: $red;
+}
+
+.pateint-records-list-accordian-summary {
+    .MuiAccordionSummary-content {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.pateint-record-danger-accordian {
+    background-color: rgba(255, 0, 0, 0.5) !important;
+}

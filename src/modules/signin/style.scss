@@ -1,0 +1,17 @@
+// @import '../../assets/styles/variable';
+
+.signin-form-grid {
+  padding-top: 3rem;
+}
+
+@media screen and (max-width: 40rem) {
+  .signin-form-grid {
+    // width: $pageLeftPartitionOnSmallSccreen;
+  }
+}
+
+@media screen and (min-width: 40.1rem) {
+  .signin-form-grid {
+    // width: $pageLeftPartitionSize;
+  }
+}

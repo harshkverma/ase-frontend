@@ -1,0 +1,40 @@
+import { EUserRole, IPatient } from "../modules/avatarPopOverContent/interface";
+
+export const patientData: IPatient[] = [
+  {
+    _id: "1p",
+    name: "ABC",
+    age: 30,
+    profile_pic: "profilePic.jpeg",
+    user_name: "abc_123",
+    email: "abc@gmail.com",
+    contact_number: "+1(382)880-9067",
+    address: "BHU, Windsor, Canada",
+    role: "patient" as EUserRole,
+    sex: "male",
+  },
+  {
+    _id: "2p",
+    name: "YUI",
+    age: 30,
+    profile_pic: "patient_1.jpeg",
+    user_name: "abc_123",
+    email: "abc@gmail.com",
+    contact_number: "+1(382)880-3489",
+    address: "EGH, Windsor, Canada",
+    role: "patient" as EUserRole,
+    sex: "male",
+  },
+  {
+    _id: "3p",
+    name: "HUI",
+    age: 30,
+    profile_pic: "patient_2.jpeg",
+    user_name: "abc_123",
+    email: "abc@gmail.com",
+    contact_number: "+1(382)880-1234",
+    address: "CJI, Windsor, Canada",
+    role: "patient" as EUserRole,
+    sex: "male",
+  },
+];

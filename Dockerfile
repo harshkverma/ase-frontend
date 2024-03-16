@@ -1,8 +1,6 @@
 FROM node:alpine3.18 as build
 WORKDIR /app
-COPY package.json
 RUN npm install
-COPY . .
 RUN npm start
 
 FROM nginx:1.23-alpine

@@ -1,4 +1,5 @@
 FROM node:alpine3.19 as build
+WORKDIR /app
 RUN npm install
 RUN npm start
 

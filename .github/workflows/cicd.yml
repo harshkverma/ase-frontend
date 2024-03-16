@@ -1,0 +1,32 @@
+name: CICD
+
+on:
+  push:
+    branches:
+      - test1
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker Image
+        run: docker build -t thehkv/frontend .
+      - name: Push Image to Docker Hub
+        run: docker push thehkv/frontend:latest
+
+  deploy:
+    needs: build
+    runs-on: aws-ec2
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull thehkv/frontend:latest
+      - name: Delete Old Container
+        run: docker rm -f reactContainer
+      - name: Run Docker Container
+        run: docker run -d --name reactContainer -p 3000:3000 thehkv/frontend
+    

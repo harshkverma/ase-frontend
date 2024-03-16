@@ -1,32 +1,43 @@
-name: CICD
+name: CI/CD
 
 on:
   push:
     branches:
       - test1
 
-
 jobs:
-  build:
-    runs-on: self-hosted 
+  build-and-deploy:
+    runs-on: self-hosted
     steps:
       - name: Checkout Source
         uses: actions/checkout@v3
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build Docker Image
-        run: docker build -t thehkv/frontend .
-      - name: Push Image to Docker Hub
-        run: docker push thehkv/frontend:latest
 
-  deploy:
-    needs: build
-    runs-on: aws-ec2
-    steps:
-      - name: Pull image from Docker Hub
-        run: docker pull thehkv/frontend:latest
-      - name: Delete Old Container
-        run: docker rm -f reactContainer
-      - name: Run Docker Container
-        run: docker run -d --name reactContainer -p 3000:3000 thehkv/frontend
-    
+      - name: Login to AWS ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+        with:
+          registry: 058264126032.dkr.ecr.us-east-1.amazonaws.com/private-frontend
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Build, Tag, and Push Docker Image to AWS ECR
+        run: |
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 058264126032.dkr.ecr.us-east-1.amazonaws.com
+          docker build -t private-frontend .
+          docker tag private-frontend:latest 058264126032.dkr.ecr.us-east-1.amazonaws.com/private-frontend:latest
+          docker push 058264126032.dkr.ecr.us-east-1.amazonaws.com/private-frontend:latest
+
+      - name: Deploy to AWS ECS
+        id: deploy-ecs
+        uses: aws-actions/aws-ecs-deploy@v2
+        with:
+          cluster: frontend-cluster
+          service: frontend-service-test2
+          task-definition: frontend-task
+          container-name: frontend-3000-tcp
+          container-port: 3000
+          image: 058264126032.dkr.ecr.us-east-1.amazonaws.com/private-frontend:latest
+        env:
+          AWS_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

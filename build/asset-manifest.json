@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ase-frontend/static/css/main.ac2c5c58.css",
+    "main.js": "/ase-frontend/static/js/main.2b180fd3.js",
+    "static/js/845.2f7ca4e6.chunk.js": "/ase-frontend/static/js/845.2f7ca4e6.chunk.js",
+    "index.html": "/ase-frontend/index.html",
+    "main.ac2c5c58.css.map": "/ase-frontend/static/css/main.ac2c5c58.css.map",
+    "main.2b180fd3.js.map": "/ase-frontend/static/js/main.2b180fd3.js.map",
+    "845.2f7ca4e6.chunk.js.map": "/ase-frontend/static/js/845.2f7ca4e6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac2c5c58.css",
+    "static/js/main.2b180fd3.js"
+  ]
+}
